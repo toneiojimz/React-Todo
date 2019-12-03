@@ -18,7 +18,8 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      dos: dos,  
+      dos: dos,
+      anotherOne: ''  
     };
   }
 
@@ -26,11 +27,27 @@ class App extends React.Component {
     //add new task to the todo list
     const newTask = {
       name: event,
-      id:Date.now(),
+      id: Date.now(),
       completed: false
     };
     this.setState({
       dos: [...this.state.dos, newTask]
+    });
+  };
+
+  toggleItem = taskId => {
+    
+    this.setState({
+      dos: this.state.dos.map(task => {
+        if (task.id === taskId){
+          return {
+            ...task,
+            completed: !task.completed
+          };
+        } else {
+          return task;
+        }
+      })
     });
   };
 
@@ -41,7 +58,10 @@ class App extends React.Component {
         <h2>Welcome to Todo App!</h2>
         <TodoForm addTask={this.addTask}/>
         <div>
-          <TodoList dos={this.state.dos}/>
+          <TodoList 
+            toggleItem={this.toggleItem}
+            dos={this.state.dos}
+            />
         </div>
         
       </div>
