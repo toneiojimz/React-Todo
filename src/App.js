@@ -6,8 +6,8 @@ import TodoForm from './components/TodoComponents/TodoForm';
 
 const dos =[
   {
-    task: 'Read React',
-    id: 234679,
+    task: 'Study React',
+    id: Date.now(),
     completed: false
   }];
 
@@ -35,13 +35,13 @@ class App extends React.Component {
   };
 
   render() {
-    console.log('please render witn no issues');
+    console.log('please render with no issues :-)');
     return (
       <div className='App'>
         <h2>Welcome to Todo App!</h2>
         <TodoForm addTask={this.addTask}/>
         <div>
-          <TodoList dos={this.state.name}/>
+          <TodoList dos={this.state.dos}/>
         </div>
         
       </div>

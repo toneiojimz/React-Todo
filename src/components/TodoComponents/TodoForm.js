@@ -13,12 +13,12 @@ class TodoForm extends React.Component{
 
     handleChanges = e => {
         //update state with each entry
-        this.setState({ newTask: e.target.value});
+        this.setState({ newTask: e.target.value });
     };
 
     //class property to submit form
-    handgleSubmit = event => {
-        event.preventDefault();
+    handgleSubmit = e => {
+        e.preventDefault();
         this.props.addTask(this.state.newTask);
         this.setState({
             newTask: ''
@@ -32,11 +32,9 @@ class TodoForm extends React.Component{
                     placeholder='..what to do'
                     type = 'text'
                     value ={this.state.newTask}
-                    onChange = {this.handleChanges}
-                    
-                     
+                    onChange = {this.handleChanges}    
                 />
-                <button onClick={this.handgleSubmit}>Add Task</button>
+                <button>Add Task</button>
             </form>
         );
     }
