@@ -17,8 +17,8 @@ class TodoForm extends React.Component{
     };
 
     //class property to submit form
-    handgleSubmit = e => {
-        e.preventDefault();
+    handgleSubmit = event => {
+        event.preventDefault();
         this.props.addTask(this.state.newTask);
         this.setState({
             newTask: ''
@@ -26,17 +26,17 @@ class TodoForm extends React.Component{
     };
 
     render(){
-        console.log('let it render now');
-
         return (
             <form onSubmit={this.handgleSubmit}>
                 <input
+                    placeholder='..what to do'
+                    type = 'text'
                     value ={this.state.newTask}
                     onChange = {this.handleChanges}
-                    type = 'text'
-                    name = 'task' 
+                    
+                     
                 />
-                <button>Add Task</button>
+                <button onClick={this.handgleSubmit}>Add Task</button>
             </form>
         );
     }

@@ -4,18 +4,12 @@ import ReactDOM from 'react-dom';
 import TodoList from './components/TodoComponents/TodoList';
 import TodoForm from './components/TodoComponents/TodoForm';
 
-const todos =[
+const dos =[
   {
     task: 'Read React',
+    id: 234679,
     completed: false
-  },
-  {
-    task: 'Review docs',
-    completed: false
-  }
-
-]
-
+  }];
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -24,20 +18,19 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      todos: todos,
-      anotherTask: ''
+      dos: dos,  
     };
   }
 
-  addTask = newTaskText =>{
+  addTask = event =>{
     //add new task to the todo list
     const newTask = {
-      task: newTaskText,
+      name: event,
       id:Date.now(),
       completed: false
     };
     this.setState({
-      todos: [...this.state.todos, newTask]
+      dos: [...this.state.dos, newTask]
     });
   };
 
@@ -45,11 +38,12 @@ class App extends React.Component {
     console.log('please render witn no issues');
     return (
       <div className='App'>
-        <h2>Welcome to your Todo App!</h2>
-        <div>
-          <TodoList todos={this.state.todos}/>
-        </div>
+        <h2>Welcome to Todo App!</h2>
         <TodoForm addTask={this.addTask}/>
+        <div>
+          <TodoList dos={this.state.name}/>
+        </div>
+        
       </div>
     );
   }
